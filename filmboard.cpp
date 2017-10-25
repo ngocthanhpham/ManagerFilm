@@ -66,6 +66,14 @@ void FilmBoard::insertFilm()
     emit listFilmChanged(m_listFilm);
 }
 
+void FilmBoard::removeFilm()
+{
+    if(m_lfilm.size() == 0) return;
+
+    m_lfilm.pop_back();
+    emit listFilmChanged(m_listFilm);
+}
+
 void FilmBoard::setlistFilm(QQmlListProperty<Film> listFilm)
 {
     if (m_listFilm == listFilm)

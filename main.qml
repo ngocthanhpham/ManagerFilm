@@ -13,10 +13,11 @@ ApplicationWindow {
     title: qsTr("MyListFilm")
 
     Item{
-        id:root
+        id:rootItem
+        objectName: "dadItem"
         height: 500; width: 700
-        signal removeFilm()
-        //property Alisas btnRemoveFilm: btnRemoveFilm
+        property int number
+        signal removeFilmQML()
         Rectangle{
             id: toprec
             width: parent.width
@@ -25,9 +26,9 @@ ApplicationWindow {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.topMargin: 35
                 anchors.top: parent.top
-
                 TextField {
                     id: txtSearch
+                    text: rootItem.number
                     placeholderText: qsTr("Text Field")
                 }
 
@@ -53,7 +54,7 @@ ApplicationWindow {
                     id: btnRemoveFilm
                     text: qsTr("Remove")
                     onClicked: {
-                        removeFilm()
+                        rootItem.removeFilmQML()
                         console.log("BtnRemove Pressed");
                     }
 
@@ -131,6 +132,10 @@ ApplicationWindow {
                 height: 400
                 anchors.top: toprec.bottom
                 ListView{
+                    anchors.rightMargin: 0
+                    anchors.bottomMargin: 0
+                    anchors.leftMargin: 0
+                    anchors.topMargin: 0
                     anchors.fill: parent
                     model: filmBoard.listFilm
                     delegate: filmDelegate

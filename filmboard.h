@@ -29,6 +29,7 @@ public:
 
     QQmlListProperty<Film> listFilm();
     Q_INVOKABLE void insertFilm();
+    Q_INVOKABLE void removeFilm();
 
 signals:
 
