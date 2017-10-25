@@ -49,7 +49,7 @@ FilmBoard::FilmBoard(QObject *parent) : QObject(parent)
 
 }
 
-QQmlListProperty<Film> FilmBoard::ListFilm()
+QQmlListProperty<Film> FilmBoard::listFilm()
 {
     return QQmlListProperty<Film>(this, this, &FilmBoard::appendFilm,
                                   &FilmBoard::countFilm,
@@ -57,11 +57,20 @@ QQmlListProperty<Film> FilmBoard::ListFilm()
                                   &FilmBoard::clearFilm);
 }
 
-void FilmBoard::setListFilm(QQmlListProperty<Film> ListFilm)
+void FilmBoard::insertFilm()
 {
-    if (m_ListFilm == ListFilm)
+    Film *film = new Film();
+    film->setName("Default");
+    film->setyom(2017);
+    m_lfilm.append(film);
+    emit listFilmChanged(m_listFilm);
+}
+
+void FilmBoard::setlistFilm(QQmlListProperty<Film> listFilm)
+{
+    if (m_listFilm == listFilm)
         return;
 
-    m_ListFilm = ListFilm;
-    emit ListFilmChanged(m_ListFilm);
+    m_listFilm = listFilm;
+    emit listFilmChanged(m_listFilm);
 }

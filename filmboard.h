@@ -8,14 +8,14 @@
 class FilmBoard : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QQmlListProperty<Film> ListFilm READ ListFilm WRITE setListFilm NOTIFY ListFilmChanged)
+    Q_PROPERTY(QQmlListProperty<Film> listFilm READ listFilm WRITE setlistFilm NOTIFY listFilmChanged)
 private:
     static void appendFilm(QQmlListProperty<Film>*, Film*);
     static int countFilm(QQmlListProperty<Film>*);
     static Film* getFilm(QQmlListProperty<Film>*, int);
     static void clearFilm(QQmlListProperty<Film>*);
 private:
-    QQmlListProperty<Film> m_ListFilm;
+    QQmlListProperty<Film> m_listFilm;
     QList<Film*> m_lfilm;
 
 public:
@@ -27,14 +27,15 @@ public:
 public:
     explicit FilmBoard(QObject *parent = nullptr);
 
-    QQmlListProperty<Film> ListFilm();
+    QQmlListProperty<Film> listFilm();
+    Q_INVOKABLE void insertFilm();
 
 signals:
 
-    void ListFilmChanged(QQmlListProperty<Film> ListFilm);
+    void listFilmChanged(QQmlListProperty<Film> listFilm);
 
 public slots:
-    void setListFilm(QQmlListProperty<Film> ListFilm);
+    void setlistFilm(QQmlListProperty<Film> listFilm);
 };
 
 #endif // FILMBOARD_H

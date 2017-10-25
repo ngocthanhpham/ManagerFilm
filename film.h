@@ -8,49 +8,58 @@
 class Film : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(Director* MDirector READ MDirector WRITE setMDirector NOTIFY MDirectorChanged)
-    Q_PROPERTY(Actor* MActor READ MActor WRITE setMActor NOTIFY MActorChanged)
-    Q_PROPERTY(qint32 YOM READ YOM WRITE setYOM NOTIFY YOMChanged)
-    Q_PROPERTY(qint64 PB READ PB WRITE setPB NOTIFY PBChanged)
+    Q_PROPERTY(Director* mDirector READ mDirector WRITE setmDirector NOTIFY mDirectorChanged)
+    Q_PROPERTY(Actor* mActor READ mActor WRITE setmActor NOTIFY mActorChanged)
+    Q_PROPERTY(qint32 yom READ yom WRITE setyom NOTIFY yomChanged)
+    Q_PROPERTY(qint32 pb READ pb WRITE setpb NOTIFY pbChanged)
+    Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
 
 private:
 
-    Director* m_MDirector;
+    Director* m_mDirector;
 
-    Actor* m_MActor;
+    Actor* m_mActor;
 
-    qint32 m_YOM;
+    qint32 m_yom;
 
-    qint64 m_PB;
+    qint32 m_pb;
+
+    QString m_name;
 
 public:
     Film(QObject *parent = nullptr);
 
+    ~Film();
 
-    Director* MDirector() const;
+    Director* mDirector() const;
 
-    Actor* MActor() const;
+    Actor* mActor() const;
 
-    qint32 YOM() const;
+    qint32 yom() const;
 
-    qint64 PB() const;
+    qint32 pb() const;
+
+    QString name() const;
 
 signals:
 
-    void MDirectorChanged(Director* MDirector);
+    void mDirectorChanged(Director* mDirector);
 
-    void MActorChanged(Actor* MActor);
+    void mActorChanged(Actor* mActor);
 
-    void YOMChanged(qint32 YOM);
+    void yomChanged(qint32 yom);
 
-    void PBChanged(qint64 PB);
+    void pbChanged(qint32 pb);
+
+    void nameChanged(QString name);
 
 public slots:
 
-    void setMDirector(Director* MDirector);
-    void setMActor(Actor* MActor);
-    void setYOM(qint32 YOM);
-    void setPB(qint64 PB);
+    void setmDirector(Director* mDirector);
+    void setmActor(Actor* mActor);
+    void setyom(qint32 yom);
+    void setpb(qint32 pb);
+    void setName(QString name);
 };
 
 #endif // FILM_H

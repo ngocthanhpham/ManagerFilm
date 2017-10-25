@@ -10,7 +10,7 @@ Item{
     id:root
     height: 500; width: 700
     signal removeFilm()
-    property Alisas btnRemoveFilm: btnRemoveFilm
+    //property Alisas btnRemoveFilm: btnRemoveFilm
     Rectangle{
         id: toprec
         width: parent.width

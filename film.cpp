@@ -2,61 +2,89 @@
 
 Film::Film(QObject *parent) : QObject(parent)
 {
+    m_mActor = new Actor();
+    m_mActor->setageActor(0);
+    m_mActor->setnameActor("Default");
+    m_mActor->setnationalityActor("Default");
 
+    m_mDirector = new Director();
+    m_mDirector->setageDirector(0);
+    m_mDirector->setnameDirector("Default");
+    m_mDirector->setnationalityDirector("Default");
 }
 
-Director *Film::MDirector() const
+Film::~Film()
 {
-    return m_MDirector;
+    delete m_mActor;
+    delete m_mDirector;
 }
 
-Actor *Film::MActor() const
+Director *Film::mDirector() const
 {
-    return m_MActor;
+    return m_mDirector;
 }
 
-qint32 Film::YOM() const
+Actor *Film::mActor() const
 {
-    return m_YOM;
+    return m_mActor;
 }
 
-qint64 Film::PB() const
+qint32 Film::yom() const
 {
-    return m_PB;
+    return m_yom;
 }
 
-void Film::setMDirector(Director *MDirector)
+qint32 Film::pb() const
 {
-    if (m_MDirector == MDirector)
+    return m_pb;
+}
+
+QString Film::name() const
+{
+    return m_name;
+}
+
+void Film::setmDirector(Director *mDirector)
+{
+    if (m_mDirector == mDirector)
         return;
 
-    m_MDirector = MDirector;
-    emit MDirectorChanged(m_MDirector);
+    m_mDirector = mDirector;
+    emit mDirectorChanged(m_mDirector);
 }
 
-void Film::setMActor(Actor *MActor)
+void Film::setmActor(Actor *mActor)
 {
-    if (m_MActor == MActor)
+    if (m_mActor == mActor)
         return;
 
-    m_MActor = MActor;
-    emit MActorChanged(m_MActor);
+    m_mActor = mActor;
+    emit mActorChanged(m_mActor);
 }
 
-void Film::setYOM(qint32 YOM)
+void Film::setyom(qint32 yom)
 {
-    if (m_YOM == YOM)
+    if (m_yom == yom)
         return;
 
-    m_YOM = YOM;
-    emit YOMChanged(m_YOM);
+    m_yom = yom;
+    emit yomChanged(m_yom);
 }
 
-void Film::setPB(qint64 PB)
+void Film::setpb(qint32 pb)
 {
-    if (m_PB == PB)
+    if (m_pb == pb)
         return;
 
-    m_PB = PB;
-    emit PBChanged(m_PB);
+    m_pb = pb;
+    emit pbChanged(m_pb);
+}
+
+void Film::setName(QString name)
+{
+    if (m_name == name)
+        return;
+
+    m_name = name;
+    emit nameChanged(m_name);
 }
