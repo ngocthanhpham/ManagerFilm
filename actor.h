@@ -6,36 +6,36 @@
 class Actor : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString NameActor READ NameActor WRITE setNameActor NOTIFY NameActorChanged)
-    Q_PROPERTY(QString NationalityActor READ NationalityActor WRITE setNationalityActor NOTIFY NationalityActorChanged)
-    Q_PROPERTY(qint32 AgeActor READ AgeActor WRITE setAgeActor NOTIFY AgeActorChanged)
-    QString m_NameActor;
+    Q_PROPERTY(QString nameActor READ nameActor WRITE setnameActor NOTIFY nameActorChanged)
+    Q_PROPERTY(QString nationalityActor READ nationalityActor WRITE setnationalityActor NOTIFY nationalityActorChanged)
+    Q_PROPERTY(qint32 ageActor READ ageActor WRITE setageActor NOTIFY ageActorChanged)
+    QString m_nameActor;
 
-    QString m_NationalityActor;
+    QString m_nationalityActor;
 
-    qint32 m_AgeActor;
+    qint32 m_ageActor;
 
 public:
     explicit Actor(QObject *parent = nullptr);
 
-    QString NameActor() const;
+    QString nameActor() const;
 
-    QString NationalityActor() const;
+    QString nationalityActor() const;
 
-    qint32 AgeActor() const;
+    qint32 ageActor() const;
 
 signals:
 
-    void NameActorChanged(QString NameActor);
+    void nameActorChanged(QString nameActor);
 
-    void NationalityActorChanged(QString NationalityActor);
+    void nationalityActorChanged(QString nationalityActor);
 
-    void AgeActorChanged(qint32 AgeActor);
+    void ageActorChanged(qint32 ageActor);
 
 public slots:
-    void setNameActor(QString NameActor);
-    void setNationalityActor(QString NationalityActor);
-    void setAgeActor(qint32 AgeActor);
+    void setnameActor(QString nameActor);
+    void setnationalityActor(QString nationalityActor);
+    void setageActor(qint32 ageActor);
 };
 
 #endif // ACTOR_H
