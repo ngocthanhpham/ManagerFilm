@@ -6,38 +6,38 @@
 class Director : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString NameDirector READ NameDirector WRITE setNameDirector NOTIFY NameDirectorChanged)
-    Q_PROPERTY(qint32 AgeDirector READ AgeDirector WRITE setAgeDirector NOTIFY AgeDirectorChanged)
-    Q_PROPERTY(QString NationalityDirector READ NationalityDirector WRITE setNationalityDirector NOTIFY NationalityDirectorChanged)
+    Q_PROPERTY(QString nameDirector READ nameDirector WRITE setnameDirector NOTIFY nameDirectorChanged)
+    Q_PROPERTY(qint32 ageDirector READ ageDirector WRITE setageDirector NOTIFY ageDirectorChanged)
+    Q_PROPERTY(QString nationalityDirector READ nationalityDirector WRITE setnationalityDirector NOTIFY nationalityDirectorChanged)
 public:
     explicit Director(QObject *parent = nullptr);
 
-    QString NameDirector() const;
+    QString nameDirector() const;
 
-    qint32 AgeDirector() const;
+    qint32 ageDirector() const;
 
-    QString NationalityDirector() const;
+    QString nationalityDirector() const;
 
 private:
 
-    QString m_NameDirector;
+    QString m_nameDirector;
 
-    qint32 m_AgeDirector;
+    qint32 m_ageDirector;
 
-    QString m_NationalityDirector;
+    QString m_nationalityDirector;
 
 signals:
 
-    void NameDirectorChanged(QString NameDirector);
+    void nameDirectorChanged(QString nameDirector);
 
-    void AgeDirectorChanged(qint32 AgeDirector);
+    void ageDirectorChanged(qint32 ageDirector);
 
-    void NationalityDirectorChanged(QString NationalityDirector);
+    void nationalityDirectorChanged(QString nationalityDirector);
 
 public slots:
-    void setNameDirector(QString NameDirector);
-    void setAgeDirector(qint32 AgeDirector);
-    void setNationalityDirector(QString NationalityDirector);
+    void setnameDirector(QString nameDirector);
+    void setageDirector(qint32 ageDirector);
+    void setnationalityDirector(QString nationalityDirector);
 };
 
 #endif // DIRECTOR_H

@@ -16,7 +16,7 @@ private:
     static void clearFilm(QQmlListProperty<Film>*);
 private:
     QQmlListProperty<Film> m_ListFilm;
-    QList<Film> m_lfilm;
+    QList<Film*> m_lfilm;
 
 public:
     void appendFilm(Film*);
@@ -27,7 +27,7 @@ public:
 public:
     explicit FilmBoard(QObject *parent = nullptr);
 
-    QQmlListProperty<Film> ListFilm() const;
+    QQmlListProperty<Film> ListFilm();
 
 signals:
 

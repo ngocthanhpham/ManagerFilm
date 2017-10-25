@@ -5,44 +5,44 @@ Director::Director(QObject *parent) : QObject(parent)
 
 }
 
-QString Director::NameDirector() const
+QString Director::nameDirector() const
 {
-    return m_NameDirector;
+    return m_nameDirector;
 }
 
-qint32 Director::AgeDirector() const
+qint32 Director::ageDirector() const
 {
-    return m_AgeDirector;
+    return m_ageDirector;
 }
 
-QString Director::NationalityDirector() const
+QString Director::nationalityDirector() const
 {
-    return m_NationalityDirector;
+    return m_nationalityDirector;
 }
 
-void Director::setNameDirector(QString NameDirector)
+void Director::setnameDirector(QString nameDirector)
 {
-    if (m_NameDirector == NameDirector)
+    if (m_nameDirector == nameDirector)
         return;
 
-    m_NameDirector = NameDirector;
-    emit NameDirectorChanged(m_NameDirector);
+    m_nameDirector = nameDirector;
+    emit nameDirectorChanged(m_nameDirector);
 }
 
-void Director::setAgeDirector(qint32 AgeDirector)
+void Director::setageDirector(qint32 ageDirector)
 {
-    if (m_AgeDirector == AgeDirector)
+    if (m_ageDirector == ageDirector)
         return;
 
-    m_AgeDirector = AgeDirector;
-    emit AgeDirectorChanged(m_AgeDirector);
+    m_ageDirector = ageDirector;
+    emit ageDirectorChanged(m_ageDirector);
 }
 
-void Director::setNationalityDirector(QString NationalityDirector)
+void Director::setnationalityDirector(QString nationalityDirector)
 {
-    if (m_NationalityDirector == NationalityDirector)
+    if (m_nationalityDirector == nationalityDirector)
         return;
 
-    m_NationalityDirector = NationalityDirector;
-    emit NationalityDirectorChanged(m_NationalityDirector);
+    m_nationalityDirector = nationalityDirector;
+    emit nationalityDirectorChanged(m_nationalityDirector);
 }

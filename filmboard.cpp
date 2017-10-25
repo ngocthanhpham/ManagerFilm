@@ -49,7 +49,7 @@ FilmBoard::FilmBoard(QObject *parent) : QObject(parent)
 
 }
 
-QQmlListProperty<Film> FilmBoard::ListFilm() const
+QQmlListProperty<Film> FilmBoard::ListFilm()
 {
     return QQmlListProperty<Film>(this, this, &FilmBoard::appendFilm,
                                   &FilmBoard::countFilm,

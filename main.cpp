@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     //register type qml Film
     qmlRegisterType<Film>("Manager.Film.Film", 1, 0, "Film");
     //register type qml FilmBoard
-    qmlRegisterType<FilmBoard>("Manger.Film.FilmBoard", 1, 0, "FilmBoard");
+    qmlRegisterType<FilmBoard>("Manager.Film.FilmBoard", 1, 0, "FilmBoard");
     QQmlApplicationEngine engine;
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
