@@ -17,7 +17,8 @@ ApplicationWindow {
         objectName: "dadItem"
         height: 500; width: 700
         property int number
-        signal removeFilmQML()
+        property alias fBoard : filmBoard
+        signal removeFilmQML(var filmBoard)
 
         signal sendTextSearch(string msg)
 
@@ -60,7 +61,7 @@ ApplicationWindow {
                     id: btnRemoveFilm
                     text: qsTr("Remove")
                     onClicked: {
-                        rootItem.removeFilmQML()
+                        rootItem.removeFilmQML(filmBoard)
                         console.log("BtnRemove Pressed");
                     }
 
@@ -103,6 +104,7 @@ ApplicationWindow {
                 ]
                 onListFilmChanged: {
                     console.log("List film has changed...")
+
                 }
 
             }
@@ -138,13 +140,15 @@ ApplicationWindow {
                 width: parent.width
                 height: 400
                 anchors.top: toprec.bottom
+//                color: "red"
                 ListView{
+                    id: idListFilm
                     anchors.rightMargin: 0
                     anchors.bottomMargin: 0
                     anchors.leftMargin: 0
                     anchors.topMargin: 0
                     anchors.fill: parent
-                    model: filmBoard.listFilm
+                    model: /*rootItem.fBoard.listFilm*/ filmBoard.listFilm
                     delegate: filmDelegate
                     focus: true
                 }

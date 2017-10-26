@@ -46,11 +46,18 @@ void FilmBoard::clearFilm()
 
 FilmBoard::FilmBoard(QObject *parent) : QObject(parent)
 {
-
+    for(int i = 0; i < 5; i++){
+        Film *film = new Film();
+        film->setName("Default");
+        film->setyom(2017);
+        film->setpb(1000);
+        m_lfilm.append(film);
+    }
 }
 
 QQmlListProperty<Film> FilmBoard::listFilm()
 {
+    qDebug() << "hehe: " << m_lfilm.size();
     return QQmlListProperty<Film>(this, this, &FilmBoard::appendFilm,
                                   &FilmBoard::countFilm,
                                   &FilmBoard::getFilm,
@@ -66,21 +73,19 @@ void FilmBoard::insertFilm()
     emit listFilmChanged(m_listFilm);
 }
 
-void FilmBoard::removeFilm()
+void FilmBoard::removeFilm(QVariant data)
 {
-    if(m_lfilm.size() == 0) return;
-
-    m_lfilm.pop_back();
+    qDebug() << "FilmBoard::removeFilm(QVariant data) " << data;
+    FilmBoard *filmBoard = qvariant_cast<FilmBoard*>(data);
+    if(filmBoard->countFilm() > 0){
+        filmBoard->clearFilm();
+    }
     emit listFilmChanged(m_listFilm);
 }
 
 void FilmBoard::receiveMsg(QString msg)
 {
-    QString string = "Received message " + msg;
-    std::string std_string = string.toStdString();
-    const char* content = std_string.c_str();
-
-    qDebug(content);// << "Received message ", msg.toStdString();
+      qDebug() << "Received message: " << msg;
 }
 
 void FilmBoard::setlistFilm(QQmlListProperty<Film> listFilm)

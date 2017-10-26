@@ -29,27 +29,31 @@ int main(int argc, char *argv[])
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
-        /*set property 1*/
-//    engine.rootContext()->setContextProperty("number",5000);
+    /*set property 1*/
+//  engine.rootContext()->setContextProperty("number",5000);
 
     /*set property 2*/
     QObject *obj1 = engine.rootObjects()[0];
     QObject *dadItem = obj1->findChild<QObject*>("dadItem");
-    dadItem->setProperty("number", 16000);
+//    dadItem->setProperty("number", 16000);
+    FilmBoard* fBoard = qvariant_cast<FilmBoard*>(dadItem->property("fBoard"));
+//    FilmBoard fBoard;
+//    qDebug() << engine.rootObjects().first()->findChild<QObject*>("dadItem");
+//    obj1->findChild<QObject*>("dadItem")->setProperty("fBoard", QVariant::fromValue(&fBoard));
+    QObject::connect(dadItem, SIGNAL(removeFilmQML(QVariant)), fBoard, SLOT(removeFilm(QVariant)));
+    QObject::connect(dadItem, SIGNAL(sendTextSearch(QString)), fBoard, SLOT(receiveMsg(QString)));
 
-    FilmBoard fBoard;
-    QObject::connect(dadItem, SIGNAL(removeFilmQML()), &fBoard, SLOT(removeFilm()));
-    QObject::connect(dadItem, SIGNAL(sendTextSearch(QString)), &fBoard, SLOT(receiveMsg(QString)));
-           /*set property 3*/
-//    QQmlEngine qEngine;
-//    QQmlComponent component(&qEngine, QUrl::fromLocalFile(":/main.qml"));
-//    QObject *object = component.create();
 
-//    QObject *dadItem = object->findChild<QObject*>("dadItem");
-//    if(dadItem) dadItem->setProperty("number", 15000);
-//    else {
-//        qDebug() << "Can't get dadItem";
-//    }
+    /*set property 3*/
+//  QQmlEngine qEngine;
+//  QQmlComponent component(&qEngine, QUrl::fromLocalFile(":/main.qml"));
+//  QObject *object = component.create();
+
+//  QObject *dadItem = object->findChild<QObject*>("dadItem");
+//  if(dadItem) dadItem->setProperty("number", 15000);
+//  else {
+//      qDebug() << "Can't get dadItem";
+//  }
 
     return app.exec();
 }

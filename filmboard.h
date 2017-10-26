@@ -37,7 +37,7 @@ signals:
 
 public slots:
     void setlistFilm(QQmlListProperty<Film> listFilm);
-    void removeFilm();
+    void removeFilm(QVariant);
     void receiveMsg(QString);
 };
 
