@@ -5,6 +5,7 @@
 #include <QQmlListProperty>
 #include "film.h"
 #include <QList>
+#include <QDebug>
 class FilmBoard : public QObject
 {
     Q_OBJECT
@@ -29,7 +30,6 @@ public:
 
     QQmlListProperty<Film> listFilm();
     Q_INVOKABLE void insertFilm();
-    Q_INVOKABLE void removeFilm();
 
 signals:
 
@@ -37,6 +37,8 @@ signals:
 
 public slots:
     void setlistFilm(QQmlListProperty<Film> listFilm);
+    void removeFilm();
+    void receiveMsg(QString);
 };
 
 #endif // FILMBOARD_H

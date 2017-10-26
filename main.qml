@@ -18,6 +18,9 @@ ApplicationWindow {
         height: 500; width: 700
         property int number
         signal removeFilmQML()
+
+        signal sendTextSearch(string msg)
+
         Rectangle{
             id: toprec
             width: parent.width
@@ -30,6 +33,9 @@ ApplicationWindow {
                     id: txtSearch
                     text: rootItem.number
                     placeholderText: qsTr("Text Field")
+                    onTextChanged: {
+                        rootItem.sendTextSearch(txtSearch.text)
+                    }
                 }
 
                 Button {
@@ -60,6 +66,7 @@ ApplicationWindow {
 
                 }
             }
+
             FilmBoard{
                 id: filmBoard
                 listFilm:[

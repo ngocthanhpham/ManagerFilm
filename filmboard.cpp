@@ -74,6 +74,15 @@ void FilmBoard::removeFilm()
     emit listFilmChanged(m_listFilm);
 }
 
+void FilmBoard::receiveMsg(QString msg)
+{
+    QString string = "Received message " + msg;
+    std::string std_string = string.toStdString();
+    const char* content = std_string.c_str();
+
+    qDebug(content);// << "Received message ", msg.toStdString();
+}
+
 void FilmBoard::setlistFilm(QQmlListProperty<Film> listFilm)
 {
     if (m_listFilm == listFilm)

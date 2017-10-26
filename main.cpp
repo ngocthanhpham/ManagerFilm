@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QQmlProperty>
 #include <QQmlContext>
+#include <QVariant>
 #include "director.h"
 #include "actor.h"
 #include "film.h"
@@ -38,8 +39,8 @@ int main(int argc, char *argv[])
 
     FilmBoard fBoard;
     QObject::connect(dadItem, SIGNAL(removeFilmQML()), &fBoard, SLOT(removeFilm()));
+    QObject::connect(dadItem, SIGNAL(sendTextSearch(QString)), &fBoard, SLOT(receiveMsg(QString)));
            /*set property 3*/
-
 //    QQmlEngine qEngine;
 //    QQmlComponent component(&qEngine, QUrl::fromLocalFile(":/main.qml"));
 //    QObject *object = component.create();
