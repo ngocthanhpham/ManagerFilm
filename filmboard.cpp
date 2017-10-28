@@ -57,7 +57,7 @@ FilmBoard::FilmBoard(QObject *parent) : QObject(parent)
 
 QQmlListProperty<Film> FilmBoard::listFilm()
 {
-    qDebug() << "hehe: " << m_lfilm.size();
+    qDebug() << "Size of listFilm: " << m_lfilm.size();
     return QQmlListProperty<Film>(this, this, &FilmBoard::appendFilm,
                                   &FilmBoard::countFilm,
                                   &FilmBoard::getFilm,
@@ -70,6 +70,13 @@ void FilmBoard::insertFilm()
     film->setName("Default");
     film->setyom(2017);
     m_lfilm.append(film);
+    emit listFilmChanged(m_listFilm);
+}
+
+void FilmBoard::removeFilm(int index)
+{
+    m_lfilm.removeAt(index);
+    qDebug() << "Remove film at index: " << index;
     emit listFilmChanged(m_listFilm);
 }
 

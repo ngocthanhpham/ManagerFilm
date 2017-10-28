@@ -8,16 +8,17 @@ import Manager.Film.FilmBoard 1.0
 
 ApplicationWindow {
     visible: true
-    width: 640
+    width: 700
     height: 480
     title: qsTr("MyListFilm")
 
     Item{
         id:rootItem
         objectName: "dadItem"
-        height: 500; width: 700
+        height: 500; width: 1000
         property int number
         property alias fBoard : filmBoard
+        property  alias indexFilm: idListFilm.currentIndex
         signal removeFilmQML(var filmBoard)
 
         signal sendTextSearch(string msg)
@@ -66,6 +67,16 @@ ApplicationWindow {
                     }
 
                 }
+
+                Button {
+                    id: btnRemoveAFilm
+                    text: qsTr("RemoveOne")
+                    onClicked: {
+                        filmBoard.removeFilm(rootItem.indexFilm)
+                        console.log("BtnRemove a film Pressed");
+                    }
+
+                }
             }
 
             FilmBoard{
@@ -102,36 +113,37 @@ ApplicationWindow {
                         pb: 1000
                     }
                 ]
-                onListFilmChanged: {
-                    console.log("List film has changed...")
-
-                }
-
             }
 
             Component{
                 id: filmDelegate
-                Row{
-                    spacing: 5
-                    Rectangle{
-                        width:200
-                        height: 30
-                        Text {text: modelData.name}
+                Item{
+                    width: parent.width
+                    height: 40
+                    Row{
+                        id: row1
+                        spacing: 15
+                        MyRectangle
+                        {
+                            color: "transparent"
+                            Text {text:"FilmName: " + modelData.name; topPadding: 10}
+                        }
+                        MyRectangle{
+                            color: "transparent"
+                            Text {text:"PublishedYear: " + modelData.yom; topPadding: 10}
+                        }
+                        MyRectangle{
+                            color: "transparent"
+                            Text {text:"DirectorName: " + modelData.mDirector.nameDirector; topPadding: 10}
+                        }
+                        MyRectangle{
+                            color: "transparent"
+                            Text {text: "ActorName: " + modelData.mActor.nameActor; topPadding: 10}
+                        }
                     }
-                    Rectangle{
-                        width:50
-                        height: 30
-                        Text {text: modelData.yom}
-                    }
-                    Rectangle{
-                        width:150
-                        height: 30
-                        Text {text: modelData.mDirector.nameDirector}
-                    }
-                    Rectangle{
-                        width:150
-                        height: 30
-                        Text {text: modelData.mActor.nameActor}
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: idListFilm.currentIndex = index
                     }
                 }
             }
@@ -140,7 +152,7 @@ ApplicationWindow {
                 width: parent.width
                 height: 400
                 anchors.top: toprec.bottom
-//                color: "red"
+                //                color: "red"
                 ListView{
                     id: idListFilm
                     anchors.rightMargin: 0
@@ -150,11 +162,24 @@ ApplicationWindow {
                     anchors.fill: parent
                     model: /*rootItem.fBoard.listFilm*/ filmBoard.listFilm
                     delegate: filmDelegate
+                    highlight: Rectangle{
+                        color: "grey"
+                        Text {
+                            anchors.centerIn: parent
+                            //text: "Film " + ((filmBoard.listFilm).get(idListFilm.currentIndex)).name + " selected"
+                            color: "red"
+                        }
+
+                    }
                     focus: true
+                    highlightFollowsCurrentItem: true
+                    onCurrentItemChanged: {
+                        console.log(idListFilm.currentIndex)
+                    }
+
                 }
 
             }
-
         }
     }
 }

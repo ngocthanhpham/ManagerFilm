@@ -33,9 +33,11 @@ int main(int argc, char *argv[])
 //  engine.rootContext()->setContextProperty("number",5000);
 
     /*set property 2*/
-    QObject *obj1 = engine.rootObjects()[0];
+    QObject *obj1 = engine.rootObjects().first();
     QObject *dadItem = obj1->findChild<QObject*>("dadItem");
 //    dadItem->setProperty("number", 16000);
+
+
     FilmBoard* fBoard = qvariant_cast<FilmBoard*>(dadItem->property("fBoard"));
 //    FilmBoard fBoard;
 //    qDebug() << engine.rootObjects().first()->findChild<QObject*>("dadItem");
