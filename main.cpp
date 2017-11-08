@@ -36,7 +36,8 @@ int main(int argc, char *argv[])
     QObject *obj1 = engine.rootObjects().first();
     QObject *dadItem = obj1->findChild<QObject*>("dadItem");
 //    dadItem->setProperty("number", 16000);
-
+    QObject *insertWindow = obj1->findChild<QObject*>("insertWindow");
+    qDebug() << "for test: " << insertWindow << endl;
 
     FilmBoard* fBoard = qvariant_cast<FilmBoard*>(dadItem->property("fBoard"));
 //    FilmBoard fBoard;
@@ -44,7 +45,7 @@ int main(int argc, char *argv[])
 //    obj1->findChild<QObject*>("dadItem")->setProperty("fBoard", QVariant::fromValue(&fBoard));
     QObject::connect(dadItem, SIGNAL(removeFilmQML(QVariant)), fBoard, SLOT(removeFilm(QVariant)));
     QObject::connect(dadItem, SIGNAL(sendTextSearch(QString)), fBoard, SLOT(receiveMsg(QString)));
-
+    QObject::connect(insertWindow, SIGNAL(sendFilm(QVariant)), fBoard , SLOT(onSendFilm(QVariant)));
 
     /*set property 3*/
 //  QQmlEngine qEngine;

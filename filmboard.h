@@ -40,6 +40,8 @@ public slots:
     void setlistFilm(QQmlListProperty<Film> listFilm);
     void removeFilm(QVariant);
     void receiveMsg(QString);
+
+    void onSendFilm(QVariant);
 };
 
 #endif // FILMBOARD_H

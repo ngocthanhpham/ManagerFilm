@@ -92,7 +92,15 @@ void FilmBoard::removeFilm(QVariant data)
 
 void FilmBoard::receiveMsg(QString msg)
 {
-      qDebug() << "Received message: " << msg;
+    qDebug() << "Received message: " << msg;
+}
+
+void FilmBoard::onSendFilm(QVariant data)
+{
+    qDebug() << "onSendFilm called..." << endl;
+    Film *film = qvariant_cast<Film*>(data);
+    m_lfilm.append(film);
+    emit listFilmChanged(m_listFilm);
 }
 
 void FilmBoard::setlistFilm(QQmlListProperty<Film> listFilm)
