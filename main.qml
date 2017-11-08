@@ -1,15 +1,16 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
+import QtQuick.Controls 1.4
 import Manager.Film.Film 1.0
 import Manager.Film.Director 1.0
 import Manager.Film.Actor 1.0
 import Manager.Film.FilmBoard 1.0
-
 ApplicationWindow {
+    id: rootWindow
     visible: true
-    width: 700
-    height: 480
+    width: 1000
+    height: 500
     title: qsTr("MyListFilm")
 
     Item{
@@ -52,7 +53,10 @@ ApplicationWindow {
                     id: btnInsertFilm
                     text: qsTr("Insert")
                     onClicked: {
-                        filmBoard.insertFilm();
+                        filmBoard.insertFilm(); // call function insert default film c++
+                        var winInsertFilm = formInsertFilm.createObject(rootWindow)
+                        rootWindow.hide()
+                        conShowInsertForm.target = winInsertFilm
                         console.log("BtnInsert Pressed");
                     }
 
@@ -114,9 +118,9 @@ ApplicationWindow {
                     }
                 ]
             }
-
+            //TODO component to show list film
             Component{
-                id: filmDelegate
+                id: formShowFilm
                 Item{
                     width: parent.width
                     height: 40
@@ -161,7 +165,7 @@ ApplicationWindow {
                     anchors.topMargin: 0
                     anchors.fill: parent
                     model: /*rootItem.fBoard.listFilm*/ filmBoard.listFilm
-                    delegate: filmDelegate
+                    delegate: formShowFilm
                     highlight: Rectangle{
                         color: "grey"
                         Text {
@@ -178,7 +182,19 @@ ApplicationWindow {
                     }
 
                 }
+            }
+            //TODO component insert film
+            Component{
+                id: formInsertFilm
+                InserForm{
 
+                }
+            }
+            Connections{
+                id: conShowInsertForm
+                onVisibleChanged: {
+                    rootWindow.show();
+                }
             }
         }
     }

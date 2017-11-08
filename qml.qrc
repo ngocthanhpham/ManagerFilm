@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>MyRectangle.qml</file>
+        <file>InserForm.qml</file>
     </qresource>
 </RCC>
