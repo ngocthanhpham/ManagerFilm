@@ -15,7 +15,7 @@ QString Actor::nationalityActor() const
     return m_nationalityActor;
 }
 
-qint32 Actor::ageActor() const
+QString Actor::ageActor() const
 {
     return m_ageActor;
 }
@@ -38,7 +38,7 @@ void Actor::setnationalityActor(QString NationalityActor)
     emit nationalityActorChanged(m_nationalityActor);
 }
 
-void Actor::setageActor(qint32 AgeActor)
+void Actor::setageActor(QString AgeActor)
 {
     if (m_ageActor == AgeActor)
         return;

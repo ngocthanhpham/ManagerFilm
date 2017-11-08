@@ -10,7 +10,7 @@ QString Director::nameDirector() const
     return m_nameDirector;
 }
 
-qint32 Director::ageDirector() const
+QString Director::ageDirector() const
 {
     return m_ageDirector;
 }
@@ -29,7 +29,7 @@ void Director::setnameDirector(QString nameDirector)
     emit nameDirectorChanged(m_nameDirector);
 }
 
-void Director::setageDirector(qint32 ageDirector)
+void Director::setageDirector(QString ageDirector)
 {
     if (m_ageDirector == ageDirector)
         return;

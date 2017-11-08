@@ -29,12 +29,12 @@ Actor *Film::mActor() const
     return m_mActor;
 }
 
-qint32 Film::yom() const
+QString Film::yom() const
 {
     return m_yom;
 }
 
-qint32 Film::pb() const
+QString Film::pb() const
 {
     return m_pb;
 }
@@ -62,7 +62,7 @@ void Film::setmActor(Actor *mActor)
     emit mActorChanged(m_mActor);
 }
 
-void Film::setyom(qint32 yom)
+void Film::setyom(QString yom)
 {
     if (m_yom == yom)
         return;
@@ -71,7 +71,7 @@ void Film::setyom(qint32 yom)
     emit yomChanged(m_yom);
 }
 
-void Film::setpb(qint32 pb)
+void Film::setpb(QString pb)
 {
     if (m_pb == pb)
         return;

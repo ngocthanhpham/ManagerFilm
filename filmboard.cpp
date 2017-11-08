@@ -49,8 +49,8 @@ FilmBoard::FilmBoard(QObject *parent) : QObject(parent)
     for(int i = 0; i < 5; i++){
         Film *film = new Film();
         film->setName("Default");
-        film->setyom(2017);
-        film->setpb(1000);
+        film->setyom("2017");
+        film->setpb("1000");
         m_lfilm.append(film);
     }
 }
@@ -68,7 +68,7 @@ void FilmBoard::insertFilm()
 {
     Film *film = new Film();
     film->setName("Default");
-    film->setyom(2017);
+    film->setyom("2017");
     m_lfilm.append(film);
     emit listFilmChanged(m_listFilm);
 }

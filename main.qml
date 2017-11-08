@@ -23,7 +23,6 @@ ApplicationWindow {
         signal removeFilmQML(var filmBoard)
 
         signal sendTextSearch(string msg)
-
         Rectangle{
             id: toprec
             width: parent.width
@@ -90,31 +89,31 @@ ApplicationWindow {
                         name: "Spider-Man:Homecoming"
                         mDirector: Director{
                             nameDirector: "Jon Watts"
-                            ageDirector: 50
+                            ageDirector: "50"
                             nationalityDirector: "England"
                         }
                         mActor: Actor{
                             nameActor: "TomHolland"
-                            ageActor: 27
+                            ageActor: "27"
                             nationalityActor: "American"
                         }
-                        yom: 2017
-                        pb: 1000
+                        yom: "2017"
+                        pb: "1000"
                     },
                     Film{
                         name: "Thor:Ragnarok"
                         mDirector: Director{
                             nameDirector: "Taika Waititi"
-                            ageDirector: 50
+                            ageDirector: "50"
                             nationalityDirector: "VietNam"
                         }
                         mActor: Actor{
                             nameActor: "Chris Hemsworth"
-                            ageActor: 27
+                            ageActor: "27"
                             nationalityActor: "Japan"
                         }
-                        yom: 2017
-                        pb: 1000
+                        yom: "2017"
+                        pb: "1000"
                     }
                 ]
             }
@@ -186,9 +185,9 @@ ApplicationWindow {
             //TODO component insert film
             Component{
                 id: formInsertFilm
-                InserForm{
+                 InsertForm{
 
-                }
+                 }
             }
             Connections{
                 id: conShowInsertForm
